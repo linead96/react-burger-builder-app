@@ -84,7 +84,8 @@ class ContactData extends Component {
             { value: "cheapest", display: "Cheapest" }
           ]
         },
-        value: "",
+        value: "fastest",
+        validation: {},
         valid: true
       }
     },
@@ -116,6 +117,9 @@ class ContactData extends Component {
 
   checkValidity(value, rules) {
     let isValid = true;
+    if(!rules){
+      return true;
+    }
     if (rules.required) {
       isValid = value.trim() !== "" && isValid;
     }
@@ -134,9 +138,7 @@ class ContactData extends Component {
     };
     const updatedFormElement = { ...updatedOrderForm[inputIdentifier] };
     updatedFormElement.value = event.target.value;
-    if(updatedFormElement.validation){
-      updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
-    }
+    updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
     updatedFormElement.touched = true;
     updatedOrderForm[inputIdentifier] = updatedFormElement;
     let formIsValid = true;
