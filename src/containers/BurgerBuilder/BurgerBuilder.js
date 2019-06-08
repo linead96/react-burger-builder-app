@@ -17,10 +17,6 @@ const INGREDIENT_PRICES = {
 };
 
 class BuilderBuilder extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {...}
-  // }
   state = {
     ingredients: null,
     totalPrice: 4,
@@ -129,7 +125,7 @@ class BuilderBuilder extends Component {
             ingredientAdded={this.addIngredientHandler}
             ingredientRemoved={this.removeIngredientHandler}
             disabled={disabledInfo}
-            purchaseable={!this.state.purchaseable}
+            purchaseable={this.state.purchaseable}
             ordered={this.purchaseHandler}
             price={this.state.totalPrice}
           />
